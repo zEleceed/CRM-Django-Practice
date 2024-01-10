@@ -10,6 +10,7 @@ def index(request):
         <body>
             <h1>Hello from Vercel!</h1>
             <p>The current time is { now }.</p>
+            <p>This is a CI/CD example.<p>
         </body>
     </html>
     '''
