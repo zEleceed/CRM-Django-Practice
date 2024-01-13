@@ -13,7 +13,7 @@ https://django-template.vercel.app/
 Our Django application, `example` is configured as an installed application in `vercel_app/settings.py`:
 
 ```python
-# app/settings.py
+# vercel_app/settings.py
 INSTALLED_APPS = [
     # ...
     'website',
@@ -23,22 +23,22 @@ INSTALLED_APPS = [
 We allow "\*.vercel.app" subdomains in `ALLOWED_HOSTS`, in addition to 127.0.0.1:
 
 ```python
-# app/settings.py
-ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app']
+# vercel_app/settings.py
+ALLOWED_HOSTS = ['127.0.0.1', '.vercel.vercel_app']
 ```
 
 The `wsgi` module must use a public variable named `app` to expose the WSGI application:
 
 ```python
-# app/wsgi.py
+# vercel_app/wsgi.py
 app = get_wsgi_application()
 ```
 
 The corresponding `WSGI_APPLICATION` setting is configured to use the `app` variable from the `vercel_app.wsgi` module:
 
 ```python
-# app/settings.py
-WSGI_APPLICATION = 'app.wsgi.app'
+# vercel_app/settings.py
+WSGI_APPLICATION = 'vercel_app.wsgi.vercel_app'
 ```
 
 There is a single view which renders the current time in `example/views.py`:
@@ -79,7 +79,7 @@ urlpatterns = [
 Finally, it's made accessible to the Django server inside `vercel_app/urls.py`:
 
 ```python
-# app/urls.py
+# vercel_app/urls.py
 from django.urls import path, include
 
 urlpatterns = [
