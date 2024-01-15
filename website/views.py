@@ -28,3 +28,6 @@ def logout_user(request):
     messages.success(request, "Why you running....Fine bruda, see you later....")
     return redirect('home')
     pass
+
+def register_user(request):
+    return render(request, 'register.html', {})
