@@ -11,7 +11,7 @@ def home(request):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
-        # Autheticate
+        # Authenticate
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
@@ -28,6 +28,7 @@ def logout_user(request):
     messages.success(request, "Why you running....Fine bruda, see you later....")
     return redirect('home')
     pass
+
 
 def register_user(request):
     return render(request, 'register.html', {})
