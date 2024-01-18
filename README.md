@@ -1,105 +1,28 @@
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fexamples%2Ftree%2Fmain%2Fpython%2Fdjango&demo-title=Django%20%2B%20Vercel&demo-description=Use%20Django%204%20on%20Vercel%20with%20Serverless%20Functions%20using%20the%20Python%20Runtime.&demo-url=https%3A%2F%2Fdjango-template.vercel.app%2F&demo-image=https://assets.vercel.com/image/upload/v1669994241/random/django.png)
+# NJ'S CRM
 
-# Django + Vercel
+NJ'S CRM is a customer relationship management application developed using Django, Python, and MySQL. This project was created as an introductory venture into working with Django and MySQL, following a step-by-step tutorial by John Elder from [Codemy](https://codemy.com/). The application focuses on basic CRM functionalities including user registration, login, record management (add, view, update, delete), all while leveraging MySQL for database management.
 
-This example shows how to use Django 4 on Vercel with Serverless Functions using the [Python Runtime](https://vercel.com/docs/concepts/functions/serverless-functions/runtimes/python).
+## Features
+- User authentication (Register, Log In, Log Out)
+- CRUD operations for records (Create, Read, Update, Delete)
+- MySQL database integration
+- Basic UI using Bootstrap Templates
 
-## Demo
+## Learning Outcomes
+- Understanding the foundational structure of a Django application (URLs, Views, Templates)
+- Implementing CSRF tokens for form security
+- Utilizing Bootstrap for frontend design
+- Managing database interactions with MySQL
+- Encountering and understanding deployment challenges with MySQL and Vercel
 
-https://django-template.vercel.app/
+## Acknowledgments
+- A huge thank you to John Elder from [Codemy](https://codemy.com/), whose tutorial was instrumental in the creation of this project. This was my first hands-on experience with Django and MySQL without referring to the official documentation.
+- Tutorial Link: [John Elder's Django CRM Tutorial](https://youtu.be/t10QcFx7d5k?si=Hwd1QVon6u7ftTc9)
 
-## How it Works
+## Challenges Faced
+- Initial deployment attempt with Vercel was unsuccessful due to MySQL's local host connection limitations.
 
-Our Django application, `example` is configured as an installed application in `vercel_app/settings.py`:
-
-```python
-# vercel_app/settings.py
-INSTALLED_APPS = [
-    # ...
-    'website',
-]
-```
-
-We allow "\*.vercel.app" subdomains in `ALLOWED_HOSTS`, in addition to 127.0.0.1:
-
-```python
-# vercel_app/settings.py
-ALLOWED_HOSTS = ['127.0.0.1', '.vercel.vercel_app']
-```
-
-The `wsgi` module must use a public variable named `app` to expose the WSGI application:
-
-```python
-# vercel_app/wsgi.py
-app = get_wsgi_application()
-```
-
-The corresponding `WSGI_APPLICATION` setting is configured to use the `app` variable from the `vercel_app.wsgi` module:
-
-```python
-# vercel_app/settings.py
-WSGI_APPLICATION = 'vercel_app.wsgi.vercel_app'
-```
-
-There is a single view which renders the current time in `example/views.py`:
-
-```python
-# website/views.py
-from datetime import datetime
-
-from django.http import HttpResponse
-
-
-def index(request):
-    now = datetime.now()
-    html = f'''
-    <html>
-        <body>
-            <h1>Hello from Vercel!</h1>
-            <p>The current time is { now }.</p>
-        </body>
-    </html>
-    '''
-    return HttpResponse(html)
-```
-
-This view is exposed a URL through `example/urls.py`:
-
-```python
-# website/urls.py
-from django.urls import path
-
-from website.views import index
-
-urlpatterns = [
-    path('', index),
-]
-```
-
-Finally, it's made accessible to the Django server inside `vercel_app/urls.py`:
-
-```python
-# vercel_app/urls.py
-from django.urls import path, include
-
-urlpatterns = [
-    ...
-    path('', include('website.urls')),
-]
-```
-
-This example uses the Web Server Gateway Interface (WSGI) with Django to enable handling requests on Vercel with Serverless Functions.
-
-## Running Locally
-
-```bash
-python manage.py runserver
-```
-
-Your Django application is now available at `http://localhost:8000`.
-
-## One-Click Deploy
-
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=vercel-examples):
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fexamples%2Ftree%2Fmain%2Fpython%2Fdjango&demo-title=Django%20%2B%20Vercel&demo-description=Use%20Django%204%20on%20Vercel%20with%20Serverless%20Functions%20using%20the%20Python%20Runtime.&demo-url=https%3A%2F%2Fdjango-template.vercel.app%2F&demo-image=https://assets.vercel.com/image/upload/v1669994241/random/django.png)
+## Built With
+- [Django](https://www.djangoproject.com/) - The web framework used
+- [MySQL](https://www.mysql.com/) - Database Management
+- [Bootstrap](https://getbootstrap.com/) - For frontend templates
